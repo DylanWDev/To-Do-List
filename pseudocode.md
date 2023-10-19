@@ -40,6 +40,8 @@
     - ... spread operator
     - .map()
     - localStorage
+    .includes
+    .filter
 
 # Components
     - Input
