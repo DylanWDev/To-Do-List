@@ -1,5 +1,5 @@
 # tickets
- 1. input field
+ <!-- 1. input field -->
 
  2. buttons for different states of the page
 
@@ -32,4 +32,45 @@
 
 - Test the application by adding, completing, and deleting to-do items.
 
- 
+
+
+# Things to think about
+
+    - useState
+    - ... spread operator
+    - .map()
+    - localStorage
+
+
+
+----------
+import React, { useState } from "react";
+
+function InputTask() {
+  const [inputValue, setInputValue] = useState("");
+  const [items, setItems] = useState([]);
+
+  console.log(localStorage);
+  let handleKeyDown = (e) => {
+    if (e.key === "Enter" && inputValue !== "") {
+      // checks if the input is not empty and if enter was clicked
+      setItems([...items, inputValue]); // adds input value to items
+      setInputValue(""); // clears the input field
+
+      // let inputValue = e.target.value;
+      // console.log("You typed", inputValue);
+      // e.target.value = "";
+    }
+  };
+  return (
+    <div>
+      <input
+        placeholder="input"
+        id="inputField"
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
+    </div>
+  );
+}
+export default InputTask;
