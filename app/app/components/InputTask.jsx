@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 
 
 function InputTask() {
@@ -39,29 +40,34 @@ function InputTask() {
   };
 
   return (
-    <div>
+    <div className="container p-0 d-flex flex-column align-items-center justify-content-center h-100">
+      <div className="text-left w-100 border border-3 border-top-0 border-start-0 border-end-0 border-secondary">
       <input
-        placeholder="input"
+        className="w-100 border-0"
+        placeholder="add items to list"
         id="inputField"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
       />
-      <div>
+      </div>
+      <div className="overflow-auto w-100" >
         {items.map((item, index) => (
-          <div key={index}>
+          <div id="listItem" className="border border-secondary border-3 border-top-0 border-end-0 border-start-0" key={index}>
             <input
+              
               type="checkbox"
+              autoComplete="off"
               checked={selectedItems.includes(index)}
               onChange={() => toggleSelect(index)}
             />
             {item}
           </div>
         ))}
-      </div>
-      {selectedItems.length > 0 && (
-        <button onClick={deleteSelectedItems}>Delete Selected</button>
-      )}
+      </div >
+        
+          <button className="border-0 mt-auto text-center" onClick={deleteSelectedItems}>Delete Selected</button>
+      
     </div>
   );
 }
